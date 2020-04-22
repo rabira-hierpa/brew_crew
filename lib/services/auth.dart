@@ -12,7 +12,7 @@ class AuthService {
 
   // auth change user stream
   Stream<User> get user {
-    return _auth.onAuthStateChanged.map(_anonUserFirebase); 
+    return _auth.onAuthStateChanged.map(_anonUserFirebase);
   }
 
   // sign in anon
@@ -32,6 +32,13 @@ class AuthService {
   // register with email and password
 
   // sign out
+  Future signOut() async {
+    try{
+      return await _auth.signOut();
+    }catch(e){
+      print('Sign Out Error' + e.toString());
+    }
+  }
 
 }
 
